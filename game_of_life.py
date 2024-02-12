@@ -8,7 +8,7 @@ class Game_of_life:
 
     def __init__(self, board_scale):
         self.board_scale = board_scale
-        self.board = [[]]
+        self.board = [[" " for _ in range(self.board_scale)] for _ in range(self.board_scale)]
         self.updated_board = [[" " for _ in range(board_scale)] for _ in range(board_scale)]
 
 
@@ -17,10 +17,6 @@ class Game_of_life:
         for row in self.board:
             result += ' '.join(row) + '\n'
         return result
-
-    def board_maker(self):
-        self.board = [[" " for _ in range(self.board_scale)] for _ in range(self.board_scale)]
-        return self
 
     def place_cell(self):
         row  = int(input("Enter the row on the cell\n> "))
@@ -58,9 +54,6 @@ class Game_of_life:
             return count
 
 
-
-        
-
     def next_board(self, row, col):
         cell = self.board[row][col]
         counter = self.neighbor_counter(row, col)
@@ -73,19 +66,9 @@ class Game_of_life:
             self.updated_board[row][col] = cell 
 
 
-
-
-
-
-
-
 if __name__ == "__main__":
     game = Game_of_life(50)
-    game.board_maker()
     game.random_board(300)
-    #game.place_cell_auto(1, 1)
-    #game.place_cell_auto(2, 1)
-    #game.place_cell_auto(3, 1)
 
     for _ in range(100):
 

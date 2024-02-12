@@ -8,12 +8,21 @@ class TicTacToe:
             ['-', '-', '-']
         ]
 
+
+    ''' 
+    Display the board
+    '''
     def display_board(self):
         for i in range(3):
             for j in range(3):
                 print(self.board[i][j], end=' ')
             print()
 
+    '''
+    Human player makes a move
+    :param player: X or O
+    :return: row, col
+    '''
     def human_play(self, player):
 
         while True:
@@ -31,6 +40,11 @@ class TicTacToe:
 
 
 
+    '''.
+    Check if there is a winner
+    :param player: X or O
+    :return: True or False
+    '''
     def is_winner(self, player):
         for i in range(3):
             if all(self.board[i][j] == player for j in range(3)) or all(self.board[j][i] == player for j in range(3)):
@@ -40,6 +54,10 @@ class TicTacToe:
             return True
         return False
     
+    '''
+    Check if the board is full
+    :return: True or False
+    '''
     def is_board_full(self):
         for i in range(3):
             for j in range(3):
@@ -47,8 +65,11 @@ class TicTacToe:
                     return False
         return True
 
+    '''
+    Evaluate the board
+    :return: 1 if O wins, -1 if X wins, 0 if it's a tie
+    '''
     def evaluate(self):
-
 
         if self.is_winner("O"):
             return 1
@@ -60,6 +81,14 @@ class TicTacToe:
             return None
             
 
+    '''
+    Minimax algorithm
+    :param depth: depth of the tree
+    :param alpha: alpha value
+    :param beta: beta value
+    :param max_player: True if it's the max player, False if it's the min player
+    :return:
+    '''
     def minimax(self, depth, alpha, beta, max_player):
 
         score = self.evaluate()
@@ -100,6 +129,10 @@ class TicTacToe:
 
 
 
+    '''
+    Find the best move
+    :return: row, col
+    '''
     def best_move(self):
         
         start_time = time.time()
@@ -129,11 +162,17 @@ class TicTacToe:
         return best_move
 
 
+    '''
+    Computer player makes a move
+    '''
     def ai_play(self):
         
         row, col = self.best_move()
         self.board[row][col] = 'O'
 
+    ''' 
+    Play the game
+    '''
     def play_game(self):
         
         while True:
@@ -160,10 +199,6 @@ class TicTacToe:
             if self.is_board_full():
                 print("It's a tie")
                 break
-
-
-
-
 
 
 game = TicTacToe()
