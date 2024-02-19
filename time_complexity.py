@@ -47,20 +47,20 @@ bubble_time_complexity = []
 quick_time_complexity = []
 even_numbers_complexity = []
 values = []
-for i in range(100, 4000, 100):
+for i in range(100, 40000, 100):
     values.append(i)
 
 for n in values:
     data = [random.randint(1, 1000) for i in range(n)]
-    start_time = time()
-    bubble_sort(data)
-    end_time = time()
-    print("bubble sort", end= " ")
-    print(end_time - start_time)
-    bubble_time_complexity.append(end_time - start_time)
+    # start_time = time()
+    # bubble_sort(data)
+    # end_time = time()
+    # print("bubble sort", end= " ")
+    # print(end_time - start_time)
+    # bubble_time_complexity.append(end_time - start_time)
 
     start_time = time()
-    #quick_sort(data, 0, n - 1)
+    quick_sort(data, 0, n - 1)
     end_time = time()
 
     quick_time_complexity.append(end_time - start_time)
@@ -73,10 +73,10 @@ for n in values:
     # end_time = time()
     # print(end_time - start_time)
     # even_numbers_complexity.append(end_time - start_time)
-
-plt.plot(values, bubble_time_complexity, label="bubble sort")
-#plt.scatter(values, quick_time_complexity, label='quick sort')
-#plt.scatter(values, even_numbers_complexity, label='even number')
+# 
+plt.scatter(values, bubble_time_complexity, label="bubble sort")
+plt.scatter(values, quick_time_complexity, label='quick sort')
+# plt.scatter(values, even_numbers_complexity, label='even number')
 
 
 plt.grid(True)
